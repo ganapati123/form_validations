@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <script>
+        function formValidations()
+        {
+            var email_dom = document.getElementById('email')
+          
+            // ERRORS          
+           var email_span = document.getElementById('email_span')
+          
+           var wrong = `<i class="bi bi-patch-exclamation-fill"></i>`
+           var right = `<i class="bi bi-patch-check-fill"></i>`
+           //email
+           if(email_dom.value == "" || email_dom.value == undefined)
+            {
+                email_span.innerHTML=`${wrong} name@gmail.com`
+                email_span.className="text-danger"
+                email_dom.style.border="1px solid #eb4034" 
+                return false;
+            }
+            else if(!email_dom.value.match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z])+\.)+([a-zA-Z]{2,4})+$/))
+            {
+                email_span.innerHTML=`${wrong} Enter valid email`
+                input_dom.style.border="1px solid #eb4034" 
+                email_span.className="text-danger"
+                return false;
+            }
+            
+            else{
+                email_span.innerHTML=`${right}Thank you`
+                email_span.className="text-success"
+               email_dom.style.border="1px solid #179c1e" 
+               return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container p-5 w-50">
+        <form onsubmit="return formValidations()" action="server.js/server.py">
+         <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input id="email" type="email" class="form-control">
+          <span id="email_span"></span>
+         </div>
+         <div class="mb-3">
+          <button class="btn btn-primary" type="submit">SEND</button>
+         </div>
+        </form>
+    </div>
+</body>
+</html>
